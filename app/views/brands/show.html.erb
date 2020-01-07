@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @brand.name %>
+</p>
+<%= link_to 'Edit', edit_brand_path(@brand) %> |
+<%= link_to 'Back', brands_path %>
+
+<h2>cheap Brands</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>name</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @brand.products.cheap_products.each do |product| %>
+      <tr>
+        <td scope="row"><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= link_to 'Show', [@brand, product] %></td>
+        <td><%= link_to 'Edit', [:edit, @brand, product] %></td>
+        <td><%= link_to 'Destroy', [@brand, product], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Expensive Brands</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>name</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @brand.products.expensive_products.each do |product| %>
+      <tr>
+        <td scope="row"><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= link_to 'Show', [@brand, product] %></td>
+        <td><%= link_to 'Edit', [:edit, @brand, product] %></td>
+        <td><%= link_to 'Destroy', [@brand, product], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
